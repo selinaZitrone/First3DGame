@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SpaceShip_Movement : MonoBehaviour
 {
-    public Rigidbody _rigidbody;
-    public Vector3 moveVector;
-    public float moveSpeed = 1;
-    public float upForce = 1;
+    private Rigidbody _rigidbody;
+    private Vector3 moveVector;
+    [SerializeField]
+    private float moveSpeed = 1;
+    public float upForce = 100;
+    [SerializeField]
+    private float rotateSpeed = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -43,14 +46,23 @@ public class SpaceShip_Movement : MonoBehaviour
         moveVector = moveVector * moveSpeed;
 
         moveVector.y = _rigidbody.velocity.y;
-        _rigidbody.velocity = moveVector;
+        this._rigidbody.velocity = moveVector;
+
+
+
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space))
+        // https://www.youtube.com/watch?v=hG9SzQxaCm8
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             _rigidbody.AddForce(Vector3.up * upForce);
         }
+
+        float viewRotation = Input.GetAxis("Mouse X");
+        Vector3 angularVelocity = this._rigidbody.angularVelocity;
+        angularVelocity.y = viewRotation * 20;
+        this._rigidbody.angularVelocity = angularVelocity;
     }
 }
