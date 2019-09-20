@@ -41,28 +41,64 @@ public class SpaceShip_Movement : MonoBehaviour
             moveVector += transform.right;
         }
 
+        // https://www.youtube.com/watch?v=hG9SzQxaCm8
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
+            _rigidbody.AddForce(Vector3.up * upForce);
+            canJump = false;
+            jumpTimer = jumpDelay;
+        }
+
         moveVector.Normalize();
 
         moveVector = moveVector * moveSpeed;
 
         moveVector.y = _rigidbody.velocity.y;
         this._rigidbody.velocity = moveVector;
-
-
-
     }
 
     private void FixedUpdate()
     {
-        // https://www.youtube.com/watch?v=hG9SzQxaCm8
-        if (Input.GetKeyDown(KeyCode.Space))
+       if (jumpTimer >= 0)
         {
-            _rigidbody.AddForce(Vector3.up * upForce);
+            jumpTimer -= Time.fixedDeltaTime;
         }
+
 
         float viewRotation = Input.GetAxis("Mouse X");
         Vector3 angularVelocity = this._rigidbody.angularVelocity;
         angularVelocity.y = viewRotation * 20;
         this._rigidbody.angularVelocity = angularVelocity;
     }
+
+    bool canJump;
+    private float jumpTimer;
+    [SerializeField] private float jumpDelay;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<JumpbarePlatfom>())
+        {
+            if (jumpTimer < 0) canJump = true;
+            other.GetComponent<JumpbarePlatfom>().switchColor(1);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<JumpbarePlatfom>())
+        {
+            if (jumpTimer < 0) canJump = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<JumpbarePlatfom>())
+        {
+            other.GetComponent<JumpbarePlatfom>().switchColor(0);
+
+        }
+    }
+
 }
