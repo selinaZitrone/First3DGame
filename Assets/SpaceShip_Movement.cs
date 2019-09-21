@@ -15,6 +15,7 @@ public class SpaceShip_Movement : MonoBehaviour
 
     public delegate void HasJumped();
     public static event HasJumped hasJumped;
+    public static event HasJumped hasStoppedJumping;
 
     public UnityEvent furz;
 
@@ -97,6 +98,11 @@ public class SpaceShip_Movement : MonoBehaviour
         if (other.GetComponent<JumpbarePlatfom>())
         {
             if (jumpTimer < 0) canJump = true;
+            if (hasStoppedJumping != null)
+            {
+                hasStoppedJumping();
+            }
+
             other.GetComponent<JumpbarePlatfom>().switchColor(1);
         }
     }
