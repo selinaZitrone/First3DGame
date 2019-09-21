@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpaceShip_Movement : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class SpaceShip_Movement : MonoBehaviour
     public float upForce = 100;
     [SerializeField]
     private float rotateSpeed = 1;
+
+    public delegate void HasJumped();
+    public static event HasJumped hasJumped;
+
+    public UnityEvent furz;
 
     // Start is called before the first frame update
     void Start()
@@ -41,12 +47,23 @@ public class SpaceShip_Movement : MonoBehaviour
             moveVector += transform.right;
         }
 
+        if (Input.GetKey(KeyCode.F))
+        {
+            furz.Invoke();
+        }
+
         // https://www.youtube.com/watch?v=hG9SzQxaCm8
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             _rigidbody.AddForce(Vector3.up * upForce);
             canJump = false;
             jumpTimer = jumpDelay;
+
+            if(hasJumped != null)
+            {
+                hasJumped();
+            }
+
         }
 
         moveVector.Normalize();

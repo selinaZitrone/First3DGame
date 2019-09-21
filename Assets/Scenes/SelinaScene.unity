@@ -132,8 +132,9 @@ GameObject:
   - component: {fileID: 18765252}
   - component: {fileID: 18765251}
   - component: {fileID: 18765250}
+  - component: {fileID: 18765254}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: JumpLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,12 +207,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18765249}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.26, y: 4.61, z: 0}
+  m_LocalPosition: {x: 8.87, y: 4.61, z: -0.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &18765254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18765249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa60a99674192a428a6301135cdae34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &279218767
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +603,7 @@ GameObject:
   - component: {fileID: 749379724}
   - component: {fileID: 749379725}
   - component: {fileID: 749379723}
+  - component: {fileID: 749379726}
   m_Layer: 0
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -612,6 +626,20 @@ MonoBehaviour:
   moveSpeed: 10
   upForce: 8000
   rotateSpeed: 0.7
+  furz:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 749379726}
+        m_MethodName: SelinaHatGefurzt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   jumpDelay: 0.5
 --- !u!4 &749379724
 Transform:
@@ -645,6 +673,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!114 &749379726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749379722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282338941057d4241bd5fefff4dbaa62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &825760749
 GameObject:
   m_ObjectHideFlags: 0
