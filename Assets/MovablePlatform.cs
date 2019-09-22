@@ -11,7 +11,8 @@ public class MovablePlatform : MonoBehaviour
     [SerializeField] private float velocity;
     private float journeyLength;
     private float startTime;
-
+    private Vector3 oldPosition;
+    private Vector3 newPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class MovablePlatform : MonoBehaviour
     void Update()
     {
         movePlatform();
-        
+
     }
 
     private void movePlatform()
@@ -55,6 +56,27 @@ public class MovablePlatform : MonoBehaviour
 
         }
         transform.position = Vector3.Lerp(startpos, endpos, fractionOfJourney);
-                
+
+        oldPosition = newPosition;
+        newPosition = transform.position;
+
+        if (player != null && playerTouching)
+        {
+            player.transform.position += newPosition - oldPosition;
+            playerTouching = false;
+        }
+    }
+
+    GameObject player;
+    bool playerTouching = false;
+
+    private void OnCollisionStay(Collision collision)
+    {
+
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.GetComponent<SpaceShip_Movement>()) {
+            player = collision.gameObject;
+            playerTouching = true;
+        }
     }
 }
