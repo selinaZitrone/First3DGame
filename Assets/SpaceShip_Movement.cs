@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -82,10 +83,16 @@ public class SpaceShip_Movement : MonoBehaviour
             jumpTimer -= Time.fixedDeltaTime;
         }
 
+        rotateViewX();
+        
+    }
 
-        float viewRotation = Input.GetAxis("Mouse X");
+
+    private void rotateViewX()
+    {
+        float viewRotationX = Input.GetAxis("Mouse X");
         Vector3 angularVelocity = this._rigidbody.angularVelocity;
-        angularVelocity.y = viewRotation * 20;
+        angularVelocity.y = viewRotationX * 20;
         this._rigidbody.angularVelocity = angularVelocity;
     }
 

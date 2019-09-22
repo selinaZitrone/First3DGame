@@ -5,11 +5,16 @@ using UnityEngine;
 public class JumpbarePlatfom : MonoBehaviour
 {
     [SerializeField] private Color[] colors;
+    [SerializeField] private Color[] colors_2;
     public void switchColor(int colorIndex)
     {
         if (colors.Length > 0)
         {
-            GetComponent<MeshRenderer>().material.color = colors[colorIndex];
+            GetComponent<MeshRenderer>().materials[0].color = colors[colorIndex];
+        }
+        if (colors_2.Length > 0)
+        {
+            GetComponent<MeshRenderer>().materials[1].color = colors_2[colorIndex];
         }
     }
 }
