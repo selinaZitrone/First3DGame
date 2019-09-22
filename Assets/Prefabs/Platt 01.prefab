@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7819133675135070582}
   - component: {fileID: 7819133675135070569}
   - component: {fileID: 7819133675135070581}
+  - component: {fileID: 9024606921408034191}
   m_Layer: 0
   m_Name: Platt 01
   m_TagString: Untagged
@@ -108,3 +109,18 @@ MonoBehaviour:
   colors:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0.89075184, g: 0, b: 1, a: 1}
+  colors_2: []
+--- !u!114 &9024606921408034191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819133675135070568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67cc65bec0ea064ebfcf5bbe97bebcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors: []
+  colors_2: []

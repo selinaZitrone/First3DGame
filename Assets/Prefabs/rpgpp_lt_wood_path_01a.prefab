@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5521607268215801182}
   - component: {fileID: 5536660909234406110}
   - component: {fileID: 5547513735879649390}
+  - component: {fileID: 6899524954707501079}
+  - component: {fileID: 8462186057661181373}
   m_Layer: 0
   m_Name: rpgpp_lt_wood_path_01a
   m_TagString: Untagged
@@ -25,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5523887433180120050}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.06787443, y: 0, z: 0.037516475}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -78,3 +80,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &6899524954707501079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523887433180120050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67cc65bec0ea064ebfcf5bbe97bebcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors: []
+  colors_2: []
+--- !u!64 &8462186057661181373
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523887433180120050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: d4d6eed92fb93e948b95c2fc4d1f6f8d, type: 3}
