@@ -19,16 +19,22 @@ public class SpaceShip_Movement : MonoBehaviour
     public static event HasJumped hasStoppedJumping;
 
     public UnityEvent furz;
-
+    OnTouchLose onTouchLose;
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        onTouchLose = FindObjectOfType<OnTouchLose>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (onTouchLose != null)
+        {
+            if (onTouchLose.gameLost)
+                return;
+        }
         moveVector = Vector3.zero;
        
         if (Input.GetKey(KeyCode.W))
