@@ -20,11 +20,13 @@ public class SpaceShip_Movement : MonoBehaviour
 
     public UnityEvent furz;
     OnTouchLose onTouchLose;
+    OnTouchWin onTouchWin;
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         onTouchLose = FindObjectOfType<OnTouchLose>();
+        onTouchWin = FindObjectOfType<OnTouchWin>();
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class SpaceShip_Movement : MonoBehaviour
     {
         if (onTouchLose != null)
         {
-            if (onTouchLose.gameLost)
+            if (onTouchLose.gameLost | onTouchWin.gameWon)
                 return;
         }
         moveVector = Vector3.zero;
