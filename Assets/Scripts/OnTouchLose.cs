@@ -4,41 +4,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public class OnTouchLose : MonoBehaviour
 {
-    [SerializeField] GameObject lostPanel;
+    WinLosePanel_Script lostPanel;
     public bool gameLost;
+
+    private void Awake()
+    {
+        lostPanel = FindObjectOfType<WinLosePanel_Script>();
+        Debug.Log(lostPanel);
+    }
     private void Start()
     {
-        lostPanel.SetActive(false);
         gameLost = false;
+        lostPanel.gameObject.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && gameLost)
-        {
-            RestartGame();
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.parent.GetComponent<SpaceShip_Movement>())
         {
-            Debug.Log("you lose!!");
-            PlayerLost();
-                            
+            WeLost();
+
         }
     }
 
-    private void RestartGame()
+    public void RestartGame()
     {
+        Debug.Log("Button clicked");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void PlayerLost()
+    private void WeLost()
     {
         gameLost = true;
-        lostPanel.SetActive(true);
+        lostPanel.ChangeTheLabel("you lose!!!");
+        lostPanel.LoserGraphic();
+        lostPanel.gameObject.SetActive(true);
     }
 }
