@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class JumpbarePlatfom : MonoBehaviour
 {
-    [SerializeField] private Color[] colors;
-    [SerializeField] private Color[] colors_2;
+    [SerializeField] private Color[] colors = null;
+    [SerializeField] private Color[] colors_2 = null;
     public void switchColor(int colorIndex)
     {
         if (colors.Length > 0)

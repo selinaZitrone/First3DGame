@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class WinLosePanel_Script : MonoBehaviour
 {
-    [SerializeField] GameObject panel;
-    [SerializeField] TextMeshProUGUI textLabel;
-    [SerializeField] Color wonColor;
-    [SerializeField] Color lostColor;
+    [SerializeField] GameObject panel = null;
+    [SerializeField] TextMeshProUGUI textLabel = null;
+    [SerializeField] Color wonColor = Color.green;
+    [SerializeField] Color lostColor = Color.red;
     public bool gameLost;
     public bool gameWon;
 

@@ -8,7 +8,6 @@ public class OnTouchLose : MonoBehaviour
         if(other.transform.parent.GetComponent<SpaceShip_Movement>())
         {
             EventManager.TriggerEvent("death");
-
         }
     }
   

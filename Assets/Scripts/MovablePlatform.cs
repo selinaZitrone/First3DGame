@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class MovablePlatform : MonoBehaviour
 {
-    [SerializeField]private Transform startPosition;
-    [SerializeField] private Transform endPosition;
+    [SerializeField] private Transform startPosition = null;
+    [SerializeField] private Transform endPosition = null;
     private bool moveTowardsStart;
-    [SerializeField] private float velocity;
+    [SerializeField] private float velocity = 1f;
     private float journeyLength;
     private float startTime;
     private Vector3 oldPosition;
@@ -28,7 +28,6 @@ public class MovablePlatform : MonoBehaviour
         movePlatform();
 
     }
-
     private void movePlatform()
     {
         Vector3 startpos, endpos;

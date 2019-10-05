@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class JumpLight : MonoBehaviour
 {
-    [SerializeField] private Color[] jumpLightColors;
+    [SerializeField] private Color[] jumpLightColors = { Color.green, Color.red };
     private void OnEnable()
     {
         SpaceShip_Movement.hasJumped += IHeardSomeoneJump;

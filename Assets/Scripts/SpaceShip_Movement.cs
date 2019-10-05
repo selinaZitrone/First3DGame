@@ -11,8 +11,6 @@ public class SpaceShip_Movement : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 1;
     public float upForce = 100;
-    [SerializeField]
-    private float rotateSpeed = 1;
 
     public delegate void HasJumped();
     public static event HasJumped hasJumped;
@@ -104,7 +102,7 @@ public class SpaceShip_Movement : MonoBehaviour
 
     bool canJump;
     private float jumpTimer;
-    [SerializeField] private float jumpDelay;
+    [SerializeField] private float jumpDelay = 1f;
 
     private void OnTriggerEnter(Collider other)
     {

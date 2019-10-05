@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu_Script : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI exampleLabel;
+    [SerializeField] TextMeshProUGUI exampleLabel = null;
 
     private void Start()
     {
