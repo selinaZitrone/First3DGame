@@ -25,14 +25,13 @@ public class CountDown : MonoBehaviour
 
         if (countdownTime == 0)
         {
-            StopCoroutine("CountDownTime");
             EventManager.TriggerEvent("death");
         }       
     }
 
     IEnumerator CountDownTime()
     {
-        while (true)
+        while (countdownTime>0)
         {
             yield return new WaitForSeconds(1);
             countdownTime--;
