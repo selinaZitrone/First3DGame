@@ -1,26 +1,73 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-[RequireComponent( typeof(Image) )]
+
 public class WinLosePanel_Script : MonoBehaviour
 {
+    [SerializeField] GameObject panel;
     [SerializeField] TextMeshProUGUI textLabel;
     [SerializeField] Color wonColor;
     [SerializeField] Color lostColor;
+    public bool gameLost;
+    public bool gameWon;
 
-    public void ChangeTheLabel(string newText) {
+    private void Start()
+    {
+        gameLost = false;
+        gameWon = false;
+        panel.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        EventManager.StartListening("death", PlayerLost);
+        EventManager.StartListening("won", PlayerWon);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening("death", PlayerLost);
+        EventManager.StopListening("won", PlayerWon);
+    }
+
+    private void PlayerLost()
+    {
+        gameLost = true;
+        ChangeTheLabel("you lose!!!");
+        LoserGraphic();
+        panel.SetActive(true);
+    }
+
+    private void PlayerWon()
+    {
+        ChangeTheLabel("you won!");
+        WinnerGraphic();
+        panel.SetActive(true);
+        gameWon = true;
+        
+    }
+
+    public void ChangeTheLabel(string newText)
+    {
         textLabel.text = newText;
     }
 
-    public void WinnerGraphic() {
-        GetComponent<Image>().color = wonColor;
+    public void WinnerGraphic()
+    {
+        panel.GetComponent<Image>().color = wonColor;
     }
 
     public void LoserGraphic()
     {
-        GetComponent<Image>().color = lostColor;
+        panel.GetComponent<Image>().color = lostColor;
     }
+
+    public void RestartGame()
+    {
+        Debug.Log("Button clicked");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }
